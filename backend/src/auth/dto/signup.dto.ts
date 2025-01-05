@@ -25,8 +25,9 @@ export class SignupDto implements Prisma.UserCreateInput {
 
   @Transform(({ value }) => value.trim())
   @IsString()
+  @IsOptional()
   @MinLength(4)
-  lastName: string;
+  lastName?: string;
 
   @Transform(({ value }) => value.trim())
   @IsString()

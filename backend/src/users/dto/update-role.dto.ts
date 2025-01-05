@@ -1,7 +1,5 @@
-import { $Enums } from '@prisma/client';
 import { IsEnum } from 'class-validator';
-
-import { Role } from 'src/common/enums/role.enum';
+import { $Enums, Role } from '@prisma/client';
 
 export class UpdateRoleDto {
   @IsEnum($Enums.Role)

@@ -1,6 +1,6 @@
 import { $Enums, Prisma } from '@prisma/client';
 import { Transform } from 'class-transformer';
-import { IsEmail, IsString, MinLength } from 'class-validator';
+import { IsEmail, IsOptional, IsString, MinLength } from 'class-validator';
 
 export class CreateUserDto implements Prisma.UserCreateInput {
   @IsEmail()
@@ -15,7 +15,13 @@ export class CreateUserDto implements Prisma.UserCreateInput {
   @Transform(({ value }) => value.trim())
   @IsString()
   @MinLength(4)
-  fullName: string;
+  firstName: string;
+
+  @Transform(({ value }) => value.trim())
+  @IsString()
+  @IsOptional()
+  @MinLength(4)
+  lastName?: string;
 
   @Transform(({ value }) => value.trim())
   @IsString()

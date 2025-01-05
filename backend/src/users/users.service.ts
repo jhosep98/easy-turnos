@@ -4,7 +4,7 @@ import { Injectable, UnauthorizedException } from '@nestjs/common';
 
 import { UpdateRoleDto } from './dto/update-role.dto';
 import { PrismaService } from '../prisma/prisma.service';
-import { DEFAULT_ERROR_MESSAGESS } from 'src/shared/constants';
+import { DEFAULT_ERROR_MESSAGES } from 'src/shared/constants';
 
 @Injectable()
 export class UsersService {
@@ -36,7 +36,7 @@ export class UsersService {
     });
 
     if (!user) {
-      throw new UnauthorizedException(DEFAULT_ERROR_MESSAGESS.username_is_wrong);
+      throw new UnauthorizedException(DEFAULT_ERROR_MESSAGES.username_is_wrong);
     }
 
     return user;
@@ -45,20 +45,20 @@ export class UsersService {
   async findAll() {
     const users = await this.prisma.user.findMany();
 
-    return users.map(({ password, ...rest }) => ({ ...rest }));
-  }
+    const parseWithoutPassword = users.map((user) => ({
+      ...user,
+      password: undefined,
+    }));
 
-  async update(id: Prisma.UserWhereUniqueInput, data: Prisma.UserUpdateInput) {
-    const { password, role: _, ...rest } = data;
-    const hashedPassword = await bcrypt.hash(password.toString(), 10);
-
-    return this.prisma.user.update({
-      where: { id: +id },
-      data: {
-        ...rest,
-        password: hashedPassword,
+    return {
+      data: parseWithoutPassword,
+      pagination: {
+        page: 1,
+        pageCount: 1,
+        pageSize: users.length,
+        total: users.length,
       },
-    });
+    };
   }
 
   async remove(id: Prisma.UserWhereUniqueInput) {
