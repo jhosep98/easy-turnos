@@ -2,14 +2,36 @@ version: '3.9'
 
 services:
 
+  app:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: easy_turnos_app
+    restart: always
+    env_file: .env
+    ports:
+      - "3000:3000"
+    depends_on:
+      - db
+    volumes:
+      - .:/app
+      - /app/node_modules
+      - ./prisma:/app/prisma
+    command: pnpm run start:prod
+
   db:
     image: postgres
     restart: always
+    container_name: easy_turnos_db
     shm_size: 128mb
     environment:
-      POSTGRES_PASSWORD: tx%9UP9T&kHvL9EM
-      POSTGRES_USER: root
-      POSTGRES_DB: EASY_TURNOS
+      POSTGRES_USER: ${DB_PASSWORD}
+      POSTGRES_PASSWORD: ${DB_USER}
+      POSTGRES_DB: ${DB_NAME}
     ports:
       - 5432:5432
+    volumes:
+      - db_data:/var/lib/postgresql/data
 
+volumes:
+  db_data:

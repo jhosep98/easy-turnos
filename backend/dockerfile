@@ -1,0 +1,47 @@
+# Stage 1: Build
+FROM node:18 AS builder
+
+# Set working directory
+WORKDIR /app
+
+# Install PNPM
+RUN npm install -g pnpm
+
+# Copy package.json and pnpm-lock.yaml
+COPY package.json pnpm-lock.yaml ./
+
+# Install dependencies
+RUN pnpm install --frozen-lockfile
+
+# Copy the rest of the app's files
+COPY . .
+
+# Run Prisma generate to generate Prisma client
+RUN pnpm prisma generate
+
+# Build the TypeScript project
+RUN pnpm build
+
+# Stage 2: Production
+FROM node:18-alpine AS production
+
+# Set working directory
+WORKDIR /app
+
+# Install PNPM
+RUN npm install -g pnpm
+
+# Copy built files and node_modules from builder
+COPY --from=builder /app/dist ./dist
+COPY --from=builder /app/node_modules ./node_modules
+COPY --from=builder /app/prisma ./prisma
+COPY package.json ./
+
+# Set environment variables
+ENV NODE_ENV=production
+
+# Expose port
+EXPOSE 3000
+
+# Command to run the application
+CMD ["node", "dist/main"]
