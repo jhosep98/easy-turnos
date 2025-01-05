@@ -1,0 +1,15 @@
+version: '3.9'
+
+services:
+
+  db:
+    image: postgres
+    restart: always
+    shm_size: 128mb
+    environment:
+      POSTGRES_PASSWORD: tx%9UP9T&kHvL9EM
+      POSTGRES_USER: root
+      POSTGRES_DB: EASY_TURNOS
+    ports:
+      - 5432:5432
+
