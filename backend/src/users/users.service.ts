@@ -4,7 +4,7 @@ import { Injectable, UnauthorizedException } from '@nestjs/common';
 
 import { UpdateRoleDto } from './dto/update-role.dto';
 import { PrismaService } from '../prisma/prisma.service';
-import { DEFAULT_ERROR_MESSAGES } from 'src/shared/constants';
+import { DEFAULT_ERROR_MESSAGES } from '../shared/constants';
 
 @Injectable()
 export class UsersService {
@@ -47,7 +47,7 @@ export class UsersService {
 
     const parseWithoutPassword = users.map((user) => ({
       ...user,
-      password: undefined,
+      password: null,
     }));
 
     return {
@@ -62,7 +62,7 @@ export class UsersService {
   }
 
   async remove(id: Prisma.UserWhereUniqueInput) {
-    return this.prisma.user.delete({
+    return await this.prisma.user.delete({
       where: id,
     });
   }

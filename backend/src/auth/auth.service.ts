@@ -7,8 +7,8 @@ import {
   UnauthorizedException,
 } from '@nestjs/common';
 
-import { UsersService } from 'src/users/users.service';
-import { DEFAULT_ERROR_MESSAGES, DEFAULT_MESSAGES } from 'src/shared/constants';
+import { UsersService } from '../users/users.service';
+import { DEFAULT_ERROR_MESSAGES, DEFAULT_MESSAGES } from '../shared/constants';
 
 @Injectable()
 export class AuthService {

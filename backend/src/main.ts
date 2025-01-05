@@ -1,3 +1,4 @@
+import helmet from 'helmet';
 import { NestFactory } from '@nestjs/core';
 import * as cookieParser from 'cookie-parser';
 import { ValidationPipe } from '@nestjs/common';
@@ -9,9 +10,11 @@ const DEFAULT_PORT = 3000;
 
 async function bootstrap() {
   const app = await NestFactory.create(AppModule);
+  app.setGlobalPrefix('/v1/api');
   app.use(cookieParser());
   app.enableCors();
-  app.setGlobalPrefix('/v1/api');
+  app.use(helmet());
+
   app.useGlobalPipes(new ValidationPipe());
 
   const config = new DocumentBuilder()

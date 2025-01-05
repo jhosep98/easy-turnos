@@ -12,9 +12,9 @@ import {
 
 import { UsersService } from './users.service';
 import { UpdateRoleDto } from './dto/update-role.dto';
-import { RolesGuard } from 'src/shared/guards/roles.guard';
-import { Roles } from 'src/shared/decorators/roles.decorator';
-import { JwtAuthGuard } from 'src/shared/guards/jwt-auth.guard';
+import { RolesGuard } from '../shared/guards/roles.guard';
+import { Roles } from '../shared/decorators/roles.decorator';
+import { JwtAuthGuard } from '../shared/guards/jwt-auth.guard';
 
 @ApiTags('users')
 @ApiBearerAuth()

@@ -5,8 +5,8 @@ import { Controller, Post, UseGuards, Body, Res } from '@nestjs/common';
 import { LoginDto } from './dto/login.dto';
 import { AuthService } from './auth.service';
 import { SignupDto } from './dto/signup.dto';
-import { JwtAuthGuard } from 'src/shared/guards/jwt-auth.guard';
-import { LocalAuthGuard } from 'src/shared/guards/local-auth.guard';
+import { JwtAuthGuard } from '../shared/guards/jwt-auth.guard';
+import { LocalAuthGuard } from '../shared/guards/local-auth.guard';
 
 @ApiTags('auth')
 @Controller('auth')
