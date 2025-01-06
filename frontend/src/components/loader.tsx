@@ -22,7 +22,7 @@ export const Loader: React.FC<LoaderModel> = ({ className, isFloatCenter }) => {
         })
       )}
     >
-      <l-dot-spinner size="40" speed="0.9" color="#66B5A3"></l-dot-spinner>
+      <l-dot-spinner size="40" speed="0.9" color="#0486ff"></l-dot-spinner>
     </span>
   );
 };

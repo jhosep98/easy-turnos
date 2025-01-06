@@ -2,7 +2,7 @@ import * as React from "react";
 import { Navigate, RouteObject } from "react-router-dom";
 
 import { RootLayout } from "@/layout/root";
-import { Loader } from "@/ui/components/loader";
+import { Loader } from "@/components/loader";
 import { PRIVATE_ROUTES, PUBLIC_ROUTES } from "@/helpers/routes";
 import { DashboardUserPageLazy } from "./lazy/private/user/dashboard.lazy";
 

@@ -5,7 +5,7 @@ import { publicRoutes } from "./public-routes";
 import { privateRoutes } from "./private-routes";
 
 export const AppRouter: React.FC = () => {
-  const isUserLogged = true;
+  const isUserLogged = false;
 
   const parsePublicRoutes = publicRoutes(isUserLogged);
 
