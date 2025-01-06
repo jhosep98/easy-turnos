@@ -19,7 +19,7 @@ async function bootstrap() {
 
   const config = new DocumentBuilder()
     .setTitle('EASY_TURNOS')
-    .setDescription('EASY_TURNOS API')
+    .setDescription('API for EASY_TURNOS application to manage turnos.')
     .setVersion('1.0.0')
     .addBearerAuth()
     .build();
