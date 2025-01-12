@@ -8,7 +8,7 @@ export const HomePage: React.FC = () => {
 
   return (
     <div>
-      Home Page
+      Home Page Public
       <h1>{t("title")}</h1>
       <hr />
       <Button>Login</Button>

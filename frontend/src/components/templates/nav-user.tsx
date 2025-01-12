@@ -41,7 +41,7 @@ export const NavUser: React.FC = () => {
         </Button>
 
         <DropdownMenu>
-          <DropdownMenuTrigger>
+          <DropdownMenuTrigger asChild>
             <Button
               data-sidebar="trigger"
               variant="ghost"

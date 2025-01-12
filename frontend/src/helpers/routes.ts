@@ -8,5 +8,10 @@ export const PUBLIC_ROUTES = {
 };
 
 export const PRIVATE_ROUTES = {
+  HOME: "/",
   DASHBOARD: "/dashboard",
+  CUSTOMERS: "/customers",
+  SPECIALISTS: "/specialists",
+  APPOINTMENTS: "/appointments",
+  SETTINGS: "/settings",
 };
