@@ -4,18 +4,18 @@ import { useQuery, UseQueryResult } from "@tanstack/react-query";
 import { easyTurnosApi } from "@/api/easy-turnos";
 import { fetcher, UseQueryCustomOptions } from "../base";
 import {
-  Customer,
+  // Customer,
   FilterFindManyCustomerInput,
-  // CustomersPaginated,
-  // Maybe,
+  CustomersPaginated,
+  Maybe,
   QueryFindManyCustomersArgs,
 } from "../generate";
 
-// export interface FindManyCustomerQuery {
-//   findManyVerifiedOrganizationFree?: Maybe<CustomersPaginated>;
-// }
+export interface FindManyCustomerQuery {
+  findManyVerifiedOrganizationFree?: Maybe<CustomersPaginated>;
+}
 
-export type FindManyCustomerQuery = Array<Customer>;
+// export type FindManyCustomerQuery = Array<Customer>;
 
 export const useFindManyCustomersQuery = <
   TData = FindManyCustomerQuery,

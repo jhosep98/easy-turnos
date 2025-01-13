@@ -38,7 +38,6 @@ export type Scalars = {
 };
 
 export type Pagination = {
-  __typename?: "Pagination";
   page: Scalars["Int"]["output"];
   pageCount: Scalars["Int"]["output"];
   pageSize: Scalars["Int"]["output"];
@@ -46,34 +45,12 @@ export type Pagination = {
 };
 
 export interface Customer {
-  __typename?: "Customer";
   id: number;
   name: string;
   username: string;
   email: string;
-  address: Address;
   phone: string;
   website: string;
-  company: Company;
-}
-
-export interface Address {
-  street: string;
-  suite: string;
-  city: string;
-  zipcode: string;
-  geo: Geo;
-}
-
-export interface Geo {
-  lat: string;
-  lng: string;
-}
-
-export interface Company {
-  name: string;
-  catchPhrase: string;
-  bs: string;
 }
 
 export type FilterFindManyCustomerInput = {
@@ -87,7 +64,31 @@ export type QueryFindManyCustomersArgs = {
 };
 
 export type CustomersPaginated = {
-  __typename?: "CustomerPaginated";
   data: Array<Customer>;
   pagination: Pagination;
+};
+
+export interface FindMyUserResponse {
+  id: number;
+  email: string;
+  userName: string;
+  firstName: string;
+  lastName?: string;
+  phone: string;
+}
+
+export interface LoginUserResponse {
+  userName: string;
+  firstName: string;
+  lastName: string;
+  sub: number;
+}
+
+export type UserLoginCustomInput = {
+  userName: Scalars["String"]["input"];
+  password: Scalars["String"]["input"];
+};
+
+export type MutationLoginUserArgs = {
+  input: UserLoginCustomInput;
 };
