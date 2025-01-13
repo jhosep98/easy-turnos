@@ -8,7 +8,7 @@ import { PRIVATE_ROUTES, PUBLIC_ROUTES } from "@/helpers/routes";
 import { SettingsPageLazy } from "./lazy/private/user/settings.lazy";
 import { CustomersPageLazy } from "./lazy/private/user/customers.lazy";
 import { DashboardUserPageLazy } from "./lazy/private/user/dashboard.lazy";
-import { SpecialistsPageLazy } from "./lazy/private/user/Specialists.lazy";
+import { SpecialistsPageLazy } from "./lazy/private/user/specialists.lazy";
 import { AppointmentsPageLazy } from "./lazy/private/user/appointments.lazy";
 
 export const privateRoutes = (isUserLogged: boolean): RouteObject[] => {
