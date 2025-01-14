@@ -3,9 +3,12 @@ import { createBrowserRouter, RouterProvider } from "react-router-dom";
 
 import { publicRoutes } from "./public-routes";
 import { privateRoutes } from "./private-routes";
+import { AppContext } from "@/context/app/context";
 
 export const AppRouter: React.FC = () => {
-  const isUserLogged = false;
+  const { user } = React.useContext(AppContext);
+
+  const isUserLogged = !!user?.id;
 
   const parsePublicRoutes = publicRoutes(isUserLogged);
 

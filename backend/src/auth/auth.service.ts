@@ -48,10 +48,11 @@ export class AuthService {
     });
 
     return {
+      id: user.id,
+      email: user.email,
       userName: user.userName,
       firstName: user.firstName,
       lastName: user.lastName,
-      sub: user.id,
     };
   }
 

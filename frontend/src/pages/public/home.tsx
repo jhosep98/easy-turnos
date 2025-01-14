@@ -1,5 +1,6 @@
 import * as React from "react";
 // import { useTranslation } from "react-i18next";
+import { useNavigate } from "react-router-dom";
 import {
   Calendar,
   Users,
@@ -15,8 +16,10 @@ import {
 } from "lucide-react";
 
 import { Button } from "@/components/ui/button";
+import { PUBLIC_ROUTES } from "@/helpers/routes";
 
 export const HomePage: React.FC = () => {
+  const navigate = useNavigate();
   // const { t } = useTranslation("home");
 
   return (
@@ -40,8 +43,13 @@ export const HomePage: React.FC = () => {
             </a>
           </div>
 
-          <Button className="bg-white text-primary px-6 py-2 rounded-full font-semibold hover:bg-white/90 transition-colors">
-            Sign Up
+          <Button
+            className="bg-white text-primary px-6 py-2 rounded-full font-semibold hover:bg-white/90 transition-colors"
+            onClick={() => {
+              navigate(PUBLIC_ROUTES.LOGIN);
+            }}
+          >
+            Login
           </Button>
         </nav>
 

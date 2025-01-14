@@ -9,6 +9,7 @@ import {
 } from "lucide-react";
 
 import { Button } from "@/components/ui/button";
+import { AppContext } from "@/context/app/context";
 import { Separator } from "@/components/ui/separator";
 import { SidebarTrigger } from "@/components/ui/sidebar";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
@@ -22,6 +23,8 @@ import {
 } from "@/components/ui/dropdown-menu";
 
 export const NavUser: React.FC = () => {
+  const { logout } = React.useContext(AppContext);
+
   return (
     <header className="flex h-16 shrink-0 items-center gap-2 transition-[width,height] ease-linear group-has-[[data-collapsible=icon]]/sidebar-wrapper:h-12 border-b w-full justify-between p-4">
       <div className="flex items-center gap-2">
@@ -94,7 +97,11 @@ export const NavUser: React.FC = () => {
               </DropdownMenuItem>
             </DropdownMenuGroup>
             <DropdownMenuSeparator />
-            <DropdownMenuItem>
+            <DropdownMenuItem
+              onClick={() => {
+                logout?.();
+              }}
+            >
               <LogOut />
               Log out
             </DropdownMenuItem>

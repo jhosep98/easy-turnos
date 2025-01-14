@@ -10,9 +10,12 @@ const DEFAULT_PORT = 3000;
 
 async function bootstrap() {
   const app = await NestFactory.create(AppModule);
+  app.enableCors({
+    origin: process.env.DIABCORE_FRONTEND_URL,
+    credentials: true,
+  });
   app.setGlobalPrefix('/v1/api');
   app.use(cookieParser());
-  app.enableCors();
   app.use(helmet());
 
   app.useGlobalPipes(new ValidationPipe());

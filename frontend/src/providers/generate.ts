@@ -78,17 +78,25 @@ export interface FindMyUserResponse {
 }
 
 export interface LoginUserResponse {
+  id: number;
+  email: string;
   userName: string;
   firstName: string;
-  lastName: string;
-  sub: number;
+  lastName?: string;
+  phone: string;
 }
 
 export type UserLoginCustomInput = {
-  userName: Scalars["String"]["input"];
+  username: Scalars["String"]["input"];
   password: Scalars["String"]["input"];
 };
 
 export type MutationLoginUserArgs = {
   input: UserLoginCustomInput;
 };
+
+export declare enum UserRole {
+  admin = "ADMIN",
+  user = "USER",
+  customer = "CUSTOMER",
+}

@@ -1,11 +1,9 @@
 import { useMutation, UseMutationOptions } from "@tanstack/react-query";
 
-import { LoginUserResponse, Maybe, MutationLoginUserArgs } from "../generate";
 import { easyTurnosApi } from "@/api/easy-turnos";
+import { LoginUserResponse, Maybe, MutationLoginUserArgs } from "../generate";
 
-export interface LoginUserCmsMutation {
-  loginUser?: Maybe<LoginUserResponse>;
-}
+export type LoginUserCmsMutation = Maybe<LoginUserResponse>;
 
 export const useLoginUserMutation = <TError = unknown, TContext = unknown>(
   options?: UseMutationOptions<
@@ -23,9 +21,9 @@ export const useLoginUserMutation = <TError = unknown, TContext = unknown>(
   >({
     mutationKey: ["LoginUser"],
     mutationFn: async (variables) => {
-      const response = await easyTurnosApi.post("/auth/login", variables);
+      const { data } = await easyTurnosApi.post("/auth/login", variables.input);
 
-      return response.data;
+      return data;
     },
     ...options,
   });

@@ -1,11 +1,15 @@
 import * as React from "react";
 import { z } from "zod";
+import { toast } from "sonner";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 
 import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
+import { AppContext } from "@/context/app/context";
+import { DEFAULT_MESSAGES } from "@/helpers/messages";
 import { formLoginSchema } from "@/types/schemes/login.scheme";
+import { useLoginUserMutation } from "@/providers/hooks/useLoginUserMutation";
 import {
   Form,
   FormControl,
@@ -16,6 +20,21 @@ import {
 } from "../ui/form";
 
 export const LoginForm: React.FC = () => {
+  const { setUser } = React.useContext(AppContext);
+  const { mutateAsync } = useLoginUserMutation({
+    onSuccess: (data) => {
+      console.log("!!DATA: ", data);
+      if (data?.id) {
+        setUser({ ...data });
+
+        toast.success(DEFAULT_MESSAGES.LOGIN.SUCCESS);
+      }
+    },
+    onError: () => {
+      toast.error(DEFAULT_MESSAGES.LOGIN.ERROR);
+    },
+  });
+
   const form = useForm<z.infer<typeof formLoginSchema>>({
     resolver: zodResolver(formLoginSchema),
     defaultValues: {
@@ -25,7 +44,12 @@ export const LoginForm: React.FC = () => {
   });
 
   const onSubmit = (data: z.infer<typeof formLoginSchema>) => {
-    console.log(data);
+    void mutateAsync({
+      input: {
+        username: data.username,
+        password: data.password,
+      },
+    });
   };
 
   return (
@@ -81,7 +105,11 @@ export const LoginForm: React.FC = () => {
             />
           </div>
 
-          <Button type="submit" className="w-full">
+          <Button
+            type="submit"
+            className="w-full"
+            disabled={!form.formState.isValid}
+          >
             Login
           </Button>
         </div>
