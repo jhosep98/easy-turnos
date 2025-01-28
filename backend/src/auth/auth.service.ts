@@ -62,6 +62,7 @@ export class AuthService {
     firstName,
     lastName,
     password,
+    phone,
   }: Prisma.UserCreateInput) {
     const isUserExist = await this.usersService.validateUser(userName);
 
@@ -75,6 +76,7 @@ export class AuthService {
       firstName,
       lastName,
       password,
+      phone,
       role: Role.USER,
     });
   }

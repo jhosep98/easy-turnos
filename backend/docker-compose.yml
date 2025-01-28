@@ -3,14 +3,12 @@ version: '3.9'
 services:
 
   app:
-    build:
-      context: .
-      dockerfile: Dockerfile
+    build: .
     container_name: easy_turnos_app
     restart: always
     env_file: .env
     ports:
-      - "3000:3000"
+      - "3001:3001"
     depends_on:
       - db
     volumes:
@@ -19,11 +17,15 @@ services:
       - ./prisma:/app/prisma
     environment:
       DATABASE_URL: ${DATABASE_URL}
-    command: pnpm run start:prod
+      JWT_SECRET: ${JWT_SECRET}
+      PORT: ${PORT}
+      DIABCORE_FRONTEND_URL: ${DIABCORE_FRONTEND_URL}
+      ADMIN_PASSWORD: ${ADMIN_PASSWORD}
 
   db:
     image: postgres
     restart: always
+    hostname: postgres
     container_name: easy_turnos_db
     shm_size: 128mb
     environment:

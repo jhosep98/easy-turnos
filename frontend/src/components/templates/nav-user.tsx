@@ -8,6 +8,7 @@ import {
   Moon,
 } from "lucide-react";
 
+import { cn } from "@/lib/utils";
 import { Button } from "@/components/ui/button";
 import { AppContext } from "@/context/app/context";
 import { Separator } from "@/components/ui/separator";
@@ -22,11 +23,20 @@ import {
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
 
-export const NavUser: React.FC = () => {
+interface NavUserModel {
+  className?: string;
+}
+
+export const NavUser: React.FC<NavUserModel> = ({ className }) => {
   const { logout } = React.useContext(AppContext);
 
   return (
-    <header className="flex h-16 shrink-0 items-center gap-2 transition-[width,height] ease-linear group-has-[[data-collapsible=icon]]/sidebar-wrapper:h-12 border-b w-full justify-between p-4">
+    <header
+      className={cn(
+        "flex h-16 shrink-0 items-center gap-2 transition-[width,height] ease-linear group-has-[[data-collapsible=icon]]/sidebar-wrapper:h-12 border-b w-full justify-between p-4",
+        className
+      )}
+    >
       <div className="flex items-center gap-2">
         <SidebarTrigger className="-ml-1" />
 

@@ -23,7 +23,6 @@ export const LoginForm: React.FC = () => {
   const { setUser } = React.useContext(AppContext);
   const { mutateAsync } = useLoginUserMutation({
     onSuccess: (data) => {
-      console.log("!!DATA: ", data);
       if (data?.id) {
         setUser({ ...data });
 

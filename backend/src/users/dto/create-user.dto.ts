@@ -27,4 +27,9 @@ export class CreateUserDto implements Prisma.UserCreateInput {
   @IsString()
   @MinLength(6)
   password: string;
+
+  @Transform(({ value }) => value.trim())
+  @IsString()
+  @MinLength(9)
+  phone: string;
 }
