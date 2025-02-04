@@ -50,7 +50,6 @@ export interface Customer {
   username: string;
   email: string;
   phone: string;
-  website: string;
 }
 
 export type FilterFindManyCustomerInput = {
