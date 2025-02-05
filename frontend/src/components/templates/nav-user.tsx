@@ -33,7 +33,7 @@ export const NavUser: React.FC<NavUserModel> = ({ className }) => {
   return (
     <header
       className={cn(
-        "flex h-16 shrink-0 items-center gap-2 transition-[width,height] ease-linear group-has-[[data-collapsible=icon]]/sidebar-wrapper:h-12 border-b w-full justify-between p-4",
+        "flex h-16 shrink-0 items-center gap-2 transition-[width,height] ease-linear group-has-data-[collapsible=icon]/sidebar-wrapper:h-12 border-b w-full justify-between p-4",
         className
       )}
     >
@@ -66,7 +66,7 @@ export const NavUser: React.FC<NavUserModel> = ({ className }) => {
           </DropdownMenuTrigger>
 
           <DropdownMenuContent
-            className="w-[--radix-dropdown-menu-trigger-width] min-w-32 rounded-lg"
+            className="w-(--radix-dropdown-menu-trigger-width) min-w-32 rounded-lg"
             side="bottom"
             align="end"
             sideOffset={15}
@@ -87,7 +87,7 @@ export const NavUser: React.FC<NavUserModel> = ({ className }) => {
           </DropdownMenuTrigger>
 
           <DropdownMenuContent
-            className="w-[--radix-dropdown-menu-trigger-width] min-w-56 rounded-lg"
+            className="w-(--radix-dropdown-menu-trigger-width) min-w-56 rounded-lg"
             side="bottom"
             align="end"
             sideOffset={15}

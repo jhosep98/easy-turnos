@@ -14,10 +14,16 @@ export const AppRouter: React.FC = () => {
 
   const parsePrivateRoutes = privateRoutes(isUserLogged);
 
-  const router = createBrowserRouter([
-    ...parsePublicRoutes,
-    ...parsePrivateRoutes,
-  ]);
+  const router = createBrowserRouter(
+    [...parsePublicRoutes, ...parsePrivateRoutes],
+    {
+      future: {
+        v7_relativeSplatPath: true,
+      },
+    }
+  );
 
-  return <RouterProvider router={router} />;
+  return (
+    <RouterProvider router={router} future={{ v7_startTransition: true }} />
+  );
 };
