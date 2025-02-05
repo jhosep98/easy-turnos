@@ -1,7 +1,7 @@
 import * as React from "react";
 import { X, Pencil, Facebook, Instagram, Linkedin } from "lucide-react";
 
-import { Divider } from "./divider";
+import { Separator } from "./ui/separator";
 import { UserAvatar } from "./user-avatar";
 import { Customer } from "@/providers/generate";
 import { Button } from "@/components/ui/button";
@@ -20,7 +20,18 @@ export const CustomerInfoDrawer: React.FC<CustomerInfoDrawerModel> = ({
   onEdit,
   open,
 }) => {
-  const { name } = customer;
+  const {
+    firstName,
+    email,
+    age,
+    createdAt,
+    dni,
+    lastName,
+    phone,
+    facebook,
+    instagram,
+    linkedin,
+  } = customer;
 
   if (!open) {
     return null;
@@ -29,7 +40,7 @@ export const CustomerInfoDrawer: React.FC<CustomerInfoDrawerModel> = ({
   return (
     <div>
       <header className="flex h-16 shrink-0 items-center gap-2 transition-[width,height] ease-linear group-has-data-[collapsible=icon]/sidebar-wrapper:h-12 border-b w-full justify-between p-4">
-        {customer?.name}
+        {customer?.firstName}
         <div className="flex items-center gap-2">
           <Button
             variant="ghost"
@@ -53,48 +64,80 @@ export const CustomerInfoDrawer: React.FC<CustomerInfoDrawerModel> = ({
 
       <div className="p-4 flex flex-col gap-4">
         <UserAvatar
-          name={name}
+          name={`${firstName} ${lastName}`}
           className="h-14 w-14 rounded-full"
           src="https://ui.shadcn.com/avatars/shadcn.jpg"
         />
 
-        <TextOutputInfo label="Email" description="johndoe@example.com" />
+        <TextOutputInfo label="Name" description={firstName} />
 
-        <Divider />
+        <Separator />
 
-        <TextOutputInfo label="Phone" description="1234567890" />
+        <TextOutputInfo label="Last Name" description={lastName} />
 
-        <Divider />
+        <Separator />
 
-        <TextOutputInfo label="Age" description="24" />
+        <TextOutputInfo label="Email" description={email} />
 
-        <Divider />
+        <Separator />
 
-        <TextOutputInfo label="Dni" description="96876567" />
+        <TextOutputInfo label="Phone" description={phone} />
 
-        <Divider />
+        <Separator />
+
+        <TextOutputInfo label="Age" description={`${age}`} />
+
+        <Separator />
+
+        <TextOutputInfo label="Dni" description={dni} />
+
+        <Separator />
 
         <div className="flex flex-col items-start gap-1">
           <span className="text-sm font-medium">Social</span>
 
           <div className="flex items-center gap-2">
-            <Button size="icon" variant="ghost" className="rounded-full">
+            <Button
+              size="icon"
+              variant="ghost"
+              className="rounded-full"
+              onClick={() => {
+                window.open(facebook, "_blank");
+              }}
+            >
               <Facebook />
             </Button>
 
-            <Button size="icon" variant="ghost" className="rounded-full">
+            <Button
+              size="icon"
+              variant="ghost"
+              className="rounded-full"
+              onClick={() => {
+                window.open(instagram, "_blank");
+              }}
+            >
               <Instagram />
             </Button>
 
-            <Button size="icon" variant="ghost" className="rounded-full">
+            <Button
+              size="icon"
+              variant="ghost"
+              className="rounded-full"
+              onClick={() => {
+                window.open(linkedin, "_blank");
+              }}
+            >
               <Linkedin />
             </Button>
           </div>
         </div>
 
-        <Divider />
+        <Separator />
 
-        <TextOutputInfo label="Created At" description="2023-01-01" />
+        <TextOutputInfo
+          label="Created At"
+          description={createdAt ?? new Date().toLocaleDateString()}
+        />
       </div>
     </div>
   );

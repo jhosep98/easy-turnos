@@ -12,17 +12,55 @@ import { CustomersGridWrapper } from "@/components/customers-grid-wrapper";
 const customers: Customer[] = [
   {
     id: 1,
-    name: "John Doe",
-    username: "johndoe",
-    email: "johndoe@example.com",
+    firstName: "Jhon",
+    lastName: "Doe",
+    email: "jhon@example.com",
     phone: "1234567890",
+    age: 24,
+    dni: "96876567",
+    createdAt: "2023-01-01",
+    facebook: "https://www.facebook.com/jhon.doe",
+    instagram: "https://www.instagram.com/jhon.doe",
+    linkedin: "https://www.linkedin.com/jhon.doe",
   },
   {
     id: 2,
-    name: "Jane Doe",
-    username: "janedoe",
-    email: "janedoe@example.com",
-    phone: "0987654321",
+    firstName: "Jhon",
+    lastName: "Doe",
+    email: "jhon@example.com",
+    phone: "1234567890",
+    age: 45,
+    dni: "96876567",
+    createdAt: "2023-01-01",
+    facebook: "https://www.facebook.com/jhon.doe",
+    instagram: "https://www.instagram.com/jhon.doe",
+    linkedin: "https://www.linkedin.com/jhon.doe",
+  },
+  {
+    id: 3,
+    firstName: "Oscar",
+    lastName: "Cerron Juarez",
+    email: "jhon@example.com",
+    phone: "1234567890",
+    age: 28,
+    dni: "96876567",
+    createdAt: "2023-01-01",
+    facebook: "https://www.facebook.com/jhon.doe",
+    instagram: "https://www.instagram.com/jhon.doe",
+    linkedin: "https://www.linkedin.com/jhon.doe",
+  },
+  {
+    id: 4,
+    firstName: "Emilio",
+    lastName: "Gonzales Pachas",
+    email: "jhon@example.com",
+    phone: "1234567890",
+    age: 42,
+    dni: "96876567",
+    createdAt: "2023-01-01",
+    facebook: "https://www.facebook.com/jhon.doe",
+    instagram: "https://www.instagram.com/jhon.doe",
+    linkedin: "https://www.linkedin.com/jhon.doe",
   },
 ];
 
@@ -36,8 +74,6 @@ export const CustomersPage: React.FC = () => {
   } = useDrawer<BaseUseDrawer>(["form", "info"]);
 
   const { info, form } = showDrawer;
-
-  console.log("!!CUSTOMER: ", customer);
 
   return (
     <ContentLayout

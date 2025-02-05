@@ -14,12 +14,12 @@ export const CustomersGridWrapper: React.FC<CustomersGridWrapperModel> = ({
 }) => (
   <div className="grid grid-cols-[repeat(auto-fill,minmax(min(220px,100%),1fr))] gap-4 p-4">
     {customers.map((customer) => {
-      const { id, name, email } = customer;
+      const { id, firstName, lastName, email } = customer;
 
       return (
         <UserCard
           key={id}
-          name={name}
+          name={`${firstName} ${lastName}`}
           email={email}
           avatar="/avatars/shadcn.jpg"
           onClick={() => {

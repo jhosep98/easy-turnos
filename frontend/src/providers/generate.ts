@@ -46,10 +46,17 @@ export type Pagination = {
 
 export interface Customer {
   id: number;
-  name: string;
-  username: string;
+  firstName: string;
+  lastName: string;
   email: string;
   phone: string;
+  age: number;
+  dni: string;
+  updatedAt?: string;
+  createdAt?: string;
+  facebook?: string;
+  instagram?: string;
+  linkedin?: string;
 }
 
 export type FilterFindManyCustomerInput = {
