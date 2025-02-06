@@ -1,5 +1,5 @@
 import * as React from "react";
-import { Plus, X, ListFilter } from "lucide-react";
+import { Plus, ListFilter } from "lucide-react";
 
 import { Button } from "@/components/ui/button";
 import { Customer } from "@/providers/generate";
@@ -7,6 +7,7 @@ import { ContentLayout } from "@/layout/content";
 import { BaseUseDrawer, useDrawer } from "@/hooks/use-drawer";
 import { SearchInput } from "@/components/templates/search-input";
 import { CustomerInfoDrawer } from "@/components/customer-info-drawer";
+import { CustomerFormDrawer } from "@/components/customer-form-drawer";
 import { CustomersGridWrapper } from "@/components/customers-grid-wrapper";
 
 const customers: Customer[] = [
@@ -97,6 +98,7 @@ export const CustomersPage: React.FC = () => {
               className="h-7 w-7"
               variant="ghost"
               onClick={() => {
+                setCustomer(null);
                 handleCloseAllDrawer();
                 handleOpenDrawer("form");
               }}
@@ -143,7 +145,7 @@ export const CustomersPage: React.FC = () => {
       }
       aside={
         <>
-          {customer && (
+          {customer ? (
             <CustomerInfoDrawer
               open={info}
               customer={customer}
@@ -155,27 +157,17 @@ export const CustomersPage: React.FC = () => {
                 handleCloseDrawer("info");
               }}
             />
-          )}
+          ) : null}
 
-          {form && (
-            <>
-              <header className="flex h-16 shrink-0 items-center gap-2 transition-[width,height] ease-linear group-has-data-[collapsible=icon]/sidebar-wrapper:h-12 border-b w-full justify-between p-4">
-                HEADER
-                <Button
-                  variant="ghost"
-                  size="icon"
-                  className="h-7 w-7"
-                  onClick={() => {
-                    handleCloseDrawer("form");
-                  }}
-                >
-                  <X />
-                </Button>
-              </header>
-
-              <div className="p-4">FORM</div>
-            </>
-          )}
+          {form ? (
+            <CustomerFormDrawer
+              open={form}
+              customer={customer ?? undefined}
+              onClose={() => {
+                handleCloseDrawer("form");
+              }}
+            />
+          ) : null}
         </>
       }
     />

@@ -19,14 +19,14 @@ export const ContentLayout: React.FC<ContentLayoutModel> = ({
   return (
     <section className="grid grid-cols-12 grid-rows-[min-content_min-content_1fr] h-full">
       <NavUser
-        className={cn("bg-white col-span-9 sticky top-0 z-10", {
+        className={cn("bg-white col-span-9", {
           "col-span-12": !isOpenDrawer,
         })}
       />
 
       <header
         className={cn(
-          "bg-white col-span-9 row-start-2 flex h-16 shrink-0 items-center gap-2 transition-[width,height] ease-linear group-has-data-[collapsible=icon]/sidebar-wrapper:h-12 border-b w-full justify-between p-4 sticky top-[48px] z-10",
+          "bg-white col-span-9 row-start-2 flex h-16 shrink-0 items-center gap-2 transition-[width,height] ease-linear group-has-data-[collapsible=icon]/sidebar-wrapper:h-12 border-b w-full justify-between p-4",
           {
             "col-span-12": !isOpenDrawer,
           }
