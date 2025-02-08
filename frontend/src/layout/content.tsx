@@ -26,7 +26,7 @@ export const ContentLayout: React.FC<ContentLayoutModel> = ({
 
       <header
         className={cn(
-          "bg-white row-start-2 flex h-16 shrink-0 items-center gap-2 transition-[width,height] ease-linear group-has-data-[collapsible=icon]/sidebar-wrapper:h-12 w-full justify-between p-4",
+          "bg-white row-start-2 flex h-16 shrink-0 items-center gap-2 transition-[width,height] ease-linear group-has-[[data-collapsible=icon]]/sidebar-wrapper:h-12 w-full justify-between p-4",
           {
             "col-span-12": !isOpenDrawer,
           }

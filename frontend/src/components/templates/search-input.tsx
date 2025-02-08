@@ -28,7 +28,7 @@ export const SearchInput: React.FC<SearchInputProps> = ({
         placeholder={placeholder}
         value={query}
         onChange={(e) => setQuery(e.target.value)}
-        className="w-full pl-10 pr-4 py-2 rounded-lg border-none bg-transparent focus:outline-hidden focus:ring-0 shadow-none focus-visible:ring-0 focus-visible:ring-offset-0"
+        className="w-full pl-10 pr-4 py-2 rounded-lg border-none bg-transparent focus:outline-none focus:ring-0 shadow-none focus-visible:ring-0 focus-visible:ring-offset-0"
       />
 
       <button

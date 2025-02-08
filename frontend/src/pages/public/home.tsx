@@ -98,7 +98,7 @@ export const HomePage: React.FC = () => {
             ].map((feature, index) => (
               <div
                 key={index}
-                className="bg-white p-8 rounded-xl shadow-xs hover:shadow-md transition-shadow"
+                className="bg-white p-8 rounded-xl shadow-sm hover:shadow-md transition-shadow"
               >
                 <div className="mb-4">{feature.icon}</div>
                 <h3 className="text-xl font-semibold mb-4 text-secondary-foreground">
@@ -144,7 +144,7 @@ export const HomePage: React.FC = () => {
                   "Simple to use yet powerful. It's exactly what our growing clinic needed.",
               },
             ].map((testimonial, index) => (
-              <div key={index} className="bg-card p-8 rounded-xl shadow-xs">
+              <div key={index} className="bg-card p-8 rounded-xl shadow-sm">
                 <div className="flex items-center mb-6">
                   <img
                     src={testimonial.image}
@@ -372,7 +372,7 @@ export const HomePage: React.FC = () => {
                 <input
                   type="email"
                   placeholder="Enter your email"
-                  className="bg-white text-card-foreground px-4 py-2 rounded-l-lg w-full focus:outline-hidden focus:ring-2 focus:ring-primary"
+                  className="bg-white text-card-foreground px-4 py-2 rounded-l-lg w-full focus:outline-none focus:ring-2 focus:ring-primary"
                 />
                 <button className="bg-primary text-primary-foreground px-6 rounded-r-lg hover:bg-primary/90 transition-colors">
                   <Mail className="h-5 w-5" />
