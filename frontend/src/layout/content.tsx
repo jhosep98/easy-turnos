@@ -17,16 +17,16 @@ export const ContentLayout: React.FC<ContentLayoutModel> = ({
   isOpenDrawer,
 }) => {
   return (
-    <section className="grid grid-cols-12 grid-rows-[min-content_min-content_1fr] h-full">
+    <section className="grid grid-cols-[1fr_min-content] grid-rows-[min-content_min-content_1fr]">
       <NavUser
-        className={cn("bg-white col-span-9", {
+        className={cn("bg-white", {
           "col-span-12": !isOpenDrawer,
         })}
       />
 
       <header
         className={cn(
-          "bg-white col-span-9 row-start-2 flex h-16 shrink-0 items-center gap-2 transition-[width,height] ease-linear group-has-data-[collapsible=icon]/sidebar-wrapper:h-12 border-b w-full justify-between p-4",
+          "bg-white row-start-2 flex h-16 shrink-0 items-center gap-2 transition-[width,height] ease-linear group-has-data-[collapsible=icon]/sidebar-wrapper:h-12 w-full justify-between p-4",
           {
             "col-span-12": !isOpenDrawer,
           }
@@ -36,7 +36,7 @@ export const ContentLayout: React.FC<ContentLayoutModel> = ({
       </header>
 
       <section
-        className={cn("col-span-9 row-start-3", {
+        className={cn(" row-start-3", {
           "col-span-12": !isOpenDrawer,
         })}
       >
@@ -44,7 +44,7 @@ export const ContentLayout: React.FC<ContentLayoutModel> = ({
       </section>
 
       {isOpenDrawer ? (
-        <aside className="col-span-3 row-span-3 col-start-10 row border-l border-border">
+        <aside className="w-[375px] row-span-3 col-start-11 row border-l border-border">
           {aside}
         </aside>
       ) : null}

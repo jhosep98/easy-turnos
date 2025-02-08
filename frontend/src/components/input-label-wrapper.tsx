@@ -21,7 +21,7 @@ export const InputLabelWrapper: React.FC<InputLabelWrapperModel> = ({
   value,
 }) => {
   return (
-    <div className="grid w-full max-w-sm items-center gap-1">
+    <div className="grid w-full max-w-sm items-center pt-2">
       <Label htmlFor={name}>{label}</Label>
 
       <Input
@@ -31,7 +31,7 @@ export const InputLabelWrapper: React.FC<InputLabelWrapperModel> = ({
         placeholder={placeholder}
         value={value}
         onChange={onChange}
-        className="focus:outline-hidden focus:ring-0 shadow-none focus-visible:ring-0 focus-visible:ring-offset-0 border-none"
+        className="focus:outline-hidden focus:ring-0 shadow-none focus-visible:ring-0 focus-visible:ring-offset-0 border-none p-0 h-auto py-2"
       />
     </div>
   );

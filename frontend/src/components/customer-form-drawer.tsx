@@ -2,6 +2,7 @@ import * as React from "react";
 import { X } from "lucide-react";
 
 import { Button } from "./ui/button";
+import { Separator } from "./ui/separator";
 import { Customer } from "@/providers/generate";
 import { InputLabelWrapper } from "./input-label-wrapper";
 
@@ -30,16 +31,26 @@ export const CustomerFormDrawer: React.FC<CustomerInfoDrawerModel> = (
         </Button>
       </header>
 
-      <div className="p-4 flex flex-col gap-6 divide-y">
+      <form
+        id="customer-form"
+        className="p-4 pb-[72px] flex-1 flex flex-col gap-2"
+        autoComplete="off"
+      >
         <InputLabelWrapper label="Image" name="profile" type="file" />
 
+        <Separator />
+
         <InputLabelWrapper label="Name" name="name" placeholder="John" />
+
+        <Separator />
 
         <InputLabelWrapper
           label="Last Name"
           name="lastName"
           placeholder="Doe"
         />
+
+        <Separator />
 
         <InputLabelWrapper
           label="Email"
@@ -48,12 +59,16 @@ export const CustomerFormDrawer: React.FC<CustomerInfoDrawerModel> = (
           placeholder="john@doe.com"
         />
 
+        <Separator />
+
         <InputLabelWrapper
           label="Phone"
           name="phone"
           type="tel"
           placeholder="+5411240047678"
         />
+
+        <Separator />
 
         <InputLabelWrapper
           label="Age"
@@ -62,7 +77,11 @@ export const CustomerFormDrawer: React.FC<CustomerInfoDrawerModel> = (
           placeholder="27"
         />
 
+        <Separator />
+
         <InputLabelWrapper label="Dni" name="dni" placeholder="97896756" />
+
+        <Separator />
 
         <InputLabelWrapper
           label="Facebook"
@@ -71,6 +90,8 @@ export const CustomerFormDrawer: React.FC<CustomerInfoDrawerModel> = (
           placeholder="https://facebook.com/johndoe"
         />
 
+        <Separator />
+
         <InputLabelWrapper
           label="Instagram"
           name="instagram"
@@ -78,16 +99,20 @@ export const CustomerFormDrawer: React.FC<CustomerInfoDrawerModel> = (
           placeholder="https://instagram.com/johndoe"
         />
 
+        <Separator />
+
         <InputLabelWrapper
           label="Linkedin"
           name="linkedin"
           type="url"
           placeholder="https://linkedin.com/johndoe"
         />
-      </div>
 
-      <footer className="p-4 pt-0">
-        <Button className="w-full" size="lg">
+        <Separator />
+      </form>
+
+      <footer className="p-4 fixed w-[-webkit-fill-available] bottom-0 bg-white">
+        <Button className="w-full" size="lg" type="submit" form="customer-form">
           Save
         </Button>
       </footer>
