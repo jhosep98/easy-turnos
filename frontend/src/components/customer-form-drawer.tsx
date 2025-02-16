@@ -5,6 +5,7 @@ import { Button } from "./ui/button";
 import { Separator } from "./ui/separator";
 import { Customer } from "@/providers/generate";
 import { InputLabelWrapper } from "./input-label-wrapper";
+import { FileDrop } from "./file-drop";
 
 interface CustomerInfoDrawerModel {
   open: boolean;
@@ -17,16 +18,21 @@ export const CustomerFormDrawer: React.FC<CustomerInfoDrawerModel> = (
 ) => {
   const { customer, onClose } = props;
 
+  const handleFileSelect = (file: File | null) => {
+    if (file) {
+      console.log("Selected file:", file);
+      // Here you can handle the file, e.g., upload it to a server
+    } else {
+      console.log("File removed");
+      // Here you can handle file removal, e.g., delete from server
+    }
+  };
+
   return (
     <div className="flex flex-col relative">
-      <header className="flex h-16 shrink-0 items-center gap-2 transition-[width,height] ease-linear group-has-data-[collapsible=icon]/sidebar-wrapper:h-12 border-b w-full justify-between p-4">
+      <header className="flex h-16 shrink-0 items-center gap-2 transition-[width,height] ease-linear group-has-[[data-collapsible=icon]]/sidebar-wrapper:h-12 border-b w-full justify-between p-4">
         {customer?.id ? "Edit Customer" : "Add Customer"}
-        <Button
-          variant="ghost"
-          size="icon"
-          className="h-7 w-7"
-          onClick={onClose}
-        >
+        <Button variant="ghost" size="icon" onClick={onClose}>
           <X />
         </Button>
       </header>
@@ -36,7 +42,7 @@ export const CustomerFormDrawer: React.FC<CustomerInfoDrawerModel> = (
         className="p-4 pb-[72px] flex-1 flex flex-col gap-2"
         autoComplete="off"
       >
-        <InputLabelWrapper label="Image" name="profile" type="file" />
+        <FileDrop onFileSelect={handleFileSelect} />
 
         <Separator />
 
@@ -107,8 +113,6 @@ export const CustomerFormDrawer: React.FC<CustomerInfoDrawerModel> = (
           type="url"
           placeholder="https://linkedin.com/johndoe"
         />
-
-        <Separator />
       </form>
 
       <footer className="p-4 fixed w-[-webkit-fill-available] bottom-0 bg-white">

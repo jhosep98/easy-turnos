@@ -2,6 +2,7 @@ import * as React from "react";
 
 import { Input } from "./ui/input";
 import { Label } from "./ui/label";
+import { cn } from "@/lib/utils";
 
 interface InputLabelWrapperModel {
   label: string;
@@ -10,6 +11,7 @@ interface InputLabelWrapperModel {
   type?: React.HTMLInputTypeAttribute;
   value?: string | number | readonly string[];
   onChange?: React.ChangeEventHandler<HTMLInputElement>;
+  className?: string;
 }
 
 export const InputLabelWrapper: React.FC<InputLabelWrapperModel> = ({
@@ -19,6 +21,7 @@ export const InputLabelWrapper: React.FC<InputLabelWrapperModel> = ({
   type,
   onChange,
   value,
+  className,
 }) => {
   return (
     <div className="grid w-full max-w-sm items-center pt-2">
@@ -31,7 +34,10 @@ export const InputLabelWrapper: React.FC<InputLabelWrapperModel> = ({
         placeholder={placeholder}
         value={value}
         onChange={onChange}
-        className="focus:outline-hidden focus:ring-0 shadow-none focus-visible:ring-0 focus-visible:ring-offset-0 border-none p-0 h-auto py-2"
+        className={cn(
+          "focus:outline-hidden focus:ring-0 shadow-none focus-visible:ring-0 focus-visible:ring-offset-0 border-none p-0 h-auto py-2",
+          className
+        )}
       />
     </div>
   );

@@ -45,7 +45,6 @@ export const CustomerInfoDrawer: React.FC<CustomerInfoDrawerModel> = ({
           <Button
             variant="ghost"
             size="icon"
-            className="h-7 w-7"
             onClick={onEdit}
           >
             <Pencil />
@@ -54,7 +53,6 @@ export const CustomerInfoDrawer: React.FC<CustomerInfoDrawerModel> = ({
           <Button
             variant="ghost"
             size="icon"
-            className="h-7 w-7"
             onClick={onClose}
           >
             <X />
@@ -65,7 +63,7 @@ export const CustomerInfoDrawer: React.FC<CustomerInfoDrawerModel> = ({
       <div className="p-4 flex flex-col gap-4">
         <UserAvatar
           name={`${firstName} ${lastName}`}
-          className="h-14 w-14 rounded-full"
+          className="h-20 w-20 rounded-full"
           src="https://ui.shadcn.com/avatars/shadcn.jpg"
         />
 

@@ -48,7 +48,6 @@ export const NavUser: React.FC<NavUserModel> = ({ className }) => {
           data-sidebar="trigger"
           variant="ghost"
           size="icon"
-          className="h-7 w-7"
         >
           <Moon />
         </Button>
@@ -59,7 +58,6 @@ export const NavUser: React.FC<NavUserModel> = ({ className }) => {
               data-sidebar="trigger"
               variant="ghost"
               size="icon"
-              className="h-7 w-7"
             >
               <Languages />
             </Button>

@@ -89,13 +89,12 @@ export const CustomersPage: React.FC = () => {
           />
 
           <div className="flex items-center justify-center gap-2">
-            <Button size="icon" className="h-7 w-7" variant="ghost">
+            <Button size="icon" variant="ghost">
               <ListFilter />
             </Button>
 
             <Button
               size="icon"
-              className="h-7 w-7"
               variant="ghost"
               onClick={() => {
                 setCustomer(null);
