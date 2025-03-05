@@ -19,7 +19,8 @@ export const CustomersGridWrapper: React.FC<CustomersGridWrapperModel> = ({
       return (
         <UserCard
           key={id}
-          name={`${firstName} ${lastName}`}
+          firstName={firstName}
+          lastName={lastName}
           email={email}
           avatar="/avatars/shadcn.jpg"
           onClick={() => {

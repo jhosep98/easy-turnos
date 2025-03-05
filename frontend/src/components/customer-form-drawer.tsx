@@ -2,10 +2,11 @@ import * as React from "react";
 import { X } from "lucide-react";
 
 import { Button } from "./ui/button";
+import { FileDrop } from "./file-drop";
 import { Separator } from "./ui/separator";
 import { Customer } from "@/providers/generate";
 import { InputLabelWrapper } from "./input-label-wrapper";
-import { FileDrop } from "./file-drop";
+import { BaseDrawerTemplate } from "./templates/base-drawer";
 
 interface CustomerInfoDrawerModel {
   open: boolean;
@@ -29,17 +30,20 @@ export const CustomerFormDrawer: React.FC<CustomerInfoDrawerModel> = (
   };
 
   return (
-    <div className="flex flex-col relative">
-      <header className="flex h-16 shrink-0 items-center gap-2 transition-[width,height] ease-linear group-has-[[data-collapsible=icon]]/sidebar-wrapper:h-12 border-b w-full justify-between p-4">
-        {customer?.id ? "Edit Customer" : "Add Customer"}
-        <Button variant="ghost" size="icon" onClick={onClose}>
-          <X />
-        </Button>
-      </header>
+    <BaseDrawerTemplate
+      header={
+        <>
+          {customer?.id ? "Edit Customer" : "Add Customer"}
 
+          <Button variant="ghost" size="icon" onClick={onClose}>
+            <X />
+          </Button>
+        </>
+      }
+    >
       <form
         id="customer-form"
-        className="p-4 pb-[72px] flex-1 flex flex-col gap-2"
+        className="pb-[72px] flex-1 flex flex-col gap-2"
         autoComplete="off"
       >
         <FileDrop onFileSelect={handleFileSelect} />
@@ -115,11 +119,11 @@ export const CustomerFormDrawer: React.FC<CustomerInfoDrawerModel> = (
         />
       </form>
 
-      <footer className="p-4 fixed w-[-webkit-fill-available] bottom-0 bg-white">
+      <footer className="w-[-webkit-fill-available] bottom-0 bg-white">
         <Button className="w-full" size="lg" type="submit" form="customer-form">
           Save
         </Button>
       </footer>
-    </div>
+    </BaseDrawerTemplate>
   );
 };

@@ -57,6 +57,9 @@ export interface Customer {
   facebook?: string;
   instagram?: string;
   linkedin?: string;
+  image?: {
+    url: string;
+  };
 }
 
 export type FilterFindManyCustomerInput = {
@@ -99,6 +102,22 @@ export type UserLoginCustomInput = {
 
 export type MutationLoginUserArgs = {
   input: UserLoginCustomInput;
+};
+
+export type Specialist = {
+  id: number;
+  firstName: string;
+  lastName: string;
+  email: string;
+  phone: string;
+  age: number;
+  dni: string;
+  specialty: string;
+  updatedAt?: string;
+  createdAt?: string;
+  image?: {
+    url: string;
+  };
 };
 
 export declare enum UserRole {

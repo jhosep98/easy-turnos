@@ -84,7 +84,7 @@ export const FileDrop: React.FC<FileDropModel> = ({ onFileSelect }) => {
       </div>
 
       <div className="text-base file:bg-transparent file:text-sm file:font-medium file:text-foreground text-muted-foreground md:text-sm py-1">
-        {file ? file.name : "No file chosen"}
+        {file ? file.name : "Drag and drop or click to upload"}
       </div>
     </div>
   );

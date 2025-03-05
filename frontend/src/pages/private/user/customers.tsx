@@ -108,43 +108,18 @@ export const CustomersPage: React.FC = () => {
         </div>
       }
       content={
-        <>
-          <CustomersGridWrapper
-            customers={customers}
-            onOpenDrawer={(customer) => {
-              setCustomer(customer);
-              handleCloseAllDrawer();
-              handleOpenDrawer("info");
-            }}
-          />
-
-          {/* <div className="flex flex-1 flex-col gap-4 p-4 h-full">
-          <Button
-            className="w-fit"
-            onClick={() => {
-              handleCloseAllDrawer();
-              handleOpenDrawer("info");
-            }}
-          >
-            OPEN DRAWER INFO
-          </Button>
-
-          <Button
-            className="w-fit"
-            variant="outline"
-            onClick={() => {
-              handleCloseAllDrawer();
-              handleOpenDrawer("form");
-            }}
-          >
-            OPEN DRAWER FORM
-          </Button>
-        </div> */}
-        </>
+        <CustomersGridWrapper
+          customers={customers}
+          onOpenDrawer={(customer) => {
+            setCustomer(customer);
+            handleCloseAllDrawer();
+            handleOpenDrawer("info");
+          }}
+        />
       }
       aside={
         <>
-          {customer ? (
+          {customer && info ? (
             <CustomerInfoDrawer
               open={info}
               customer={customer}

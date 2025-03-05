@@ -4,7 +4,8 @@ import { cn } from "@/lib/utils";
 import { Avatar, AvatarFallback, AvatarImage } from "../ui/avatar";
 
 interface UserCardModel {
-  name: string;
+  firstName: string;
+  lastName: string;
   email: string;
   avatar: string;
   specialist?: string;
@@ -15,7 +16,8 @@ interface UserCardModel {
 export const UserCard: React.FC<UserCardModel> = ({
   avatar,
   email,
-  name,
+  firstName,
+  lastName,
   specialist,
   variant = "row",
   onClick,
@@ -36,8 +38,10 @@ export const UserCard: React.FC<UserCardModel> = ({
       })}
     >
       <Avatar>
-        <AvatarImage src={avatar} alt={name} />
-        <AvatarFallback>{name.charAt(0)}</AvatarFallback>
+        <AvatarImage src={avatar} alt={`${firstName} ${lastName}`} />
+        <AvatarFallback>{`${firstName.charAt(0)}${lastName.charAt(
+          0
+        )}`}</AvatarFallback>
       </Avatar>
 
       <div
@@ -45,10 +49,12 @@ export const UserCard: React.FC<UserCardModel> = ({
           "text-center leading-normal": variant === "column",
         })}
       >
-        <span className="text-sm truncate font-semibold">{name}</span>
-        <span className="text-xs text-gray-400">{email}</span>
+        <span className="text-sm truncate font-semibold">{`${firstName} ${lastName}`}</span>
+
+        <span className="text-sm text-gray-400">{email}</span>
+
         {specialist && (
-          <span className="text-xs text-gray-400 font-semibold">
+          <span className="text-sm text-gray-400 font-semibold">
             {specialist}
           </span>
         )}
